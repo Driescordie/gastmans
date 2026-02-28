@@ -146,8 +146,9 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
   .stat{border-right:none;max-width:50%;}
   .intro{grid-template-columns:1fr;gap:2rem;padding:4rem 2rem;}
   .intro-img{display:none;}
-  .services-prev{padding:4rem 2rem;}
-  .services-cards{grid-template-columns:1fr 1fr;}
+  .services-prev{padding:4rem 1.5rem;}
+  .services-cards{grid-template-columns:1fr;}
+  .svc{padding:2rem 1.5rem;}
   .portfolio-prev{padding:4rem 2rem;}
   .pf-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
   .pf-card.tall{grid-row:span 1;}
@@ -258,9 +259,9 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
       <p>Modernisering van verouderde installaties, vervanging van zekeringkasten en aanpassingen aan hedendaagse normen.</p>
     </div>
     <div class="svc">
-      <span class="svc-icon">🔍</span>
-      <h3>Keuringen</h3>
-      <p>Inspectie volgens AREI-normen — conform de wettelijke verplichtingen voor verkoop, verhuur of periodieke keuring.</p>
+      <span class="svc-icon">🚗</span>
+      <h3>Laadpalen</h3>
+      <p>Thuislaadpalen voor elektrische wagens snel, veilig en future-proof geïnstalleerd met slimme sturing.</p>
     </div>
     <div class="svc">
       <span class="svc-icon">💡</span>
@@ -329,7 +330,7 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
     <h4>Contact</h4>
     <ul>
       <li>+32 493 74 99 22</li>
-      <li>michiel.gastmans@hotmail.com</li>
+      <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e68b8f858e8f838ac8818795928b878895a68e89928b878f8ac885898b">[email&#160;protected]</a></li>
       <li>OLV-straat 48, 2400 Mol</li>
       <li>BTW: BE1012.898.051</li>
     </ul>
@@ -341,7 +342,10 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
 </div>
 
 <script>
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function toggleMenu() {
+  var menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
 </script>
 </body>
 </html>
