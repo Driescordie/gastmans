@@ -101,8 +101,9 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
   .service-big:nth-child(even){direction:ltr;}
   .sb-img{height:250px;}
   .sb-content{padding:2.5rem 2rem;}
-  .steps{grid-template-columns:1fr 1fr;}
-  .process{padding:4rem 2rem;}
+  .steps{grid-template-columns:1fr;}
+  .step{padding:2rem 1.5rem;}
+  .process{padding:4rem 1.5rem;}
   .cta-banner{grid-template-columns:1fr;padding:3rem 2rem;text-align:center;}
   footer{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem;}
   .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 2rem;}
@@ -206,7 +207,7 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
       <div class="sb-num">04</div>
       <div class="sb-icon">🔍</div>
       <h2 class="sb-title">Keuringen</h2>
-      <p class="sb-desc">Inspectie volgens AREI-normen — conform de wettelijke verplichtingen voor verkoop, verhuur of periodieke keuring.</p>
+      <p class="sb-desc">Elektrische wagens vragen om een veilige en efficiënte laadoplossing. Wij installeren thuiskeuringen van gerenommeerde merken, inclusief de aanpassing van uw groepenkast indien nodig.</p>
       <ul class="sb-list">
         <li>Type 2 & CCS keuringen</li>
         <li>Conformiteitsattest AREI</li>
@@ -274,7 +275,7 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
     <h4>Contact</h4>
     <ul>
       <li>+32 493 74 99 22</li>
-      <li><a href="mailto:michiel.gastmans@hotmail.com" style="color:rgba(255,255,255,.45);text-decoration:none;">michiel.gastmans@hotmail.com</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#96fbfff5fefff3fab8f1f7e5e2fbf7f8e5d6fef9e2fbf7fffab8f5f9fb" style="color:rgba(255,255,255,.45);text-decoration:none;"><span class="__cf_email__" data-cfemail="a0cdc9c3c8c9c5cc8ec7c1d3d4cdc1ced3e0c8cfd4cdc1c9cc8ec3cfcd">[email&#160;protected]</span></a></li>
       <li>OLV-straat 48, 2400 Mol</li>
       <li>BTW: BE1012.898.051</li>
     </ul>
@@ -284,11 +285,11 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
   <p>© 2025 Elektriciteitswerken Gastmans</p>
   <p>BTW BE1012.898.051 &nbsp;|&nbsp; Website door <a href="https://cortech.be" target="_blank" rel="noopener" style="color:rgba(255,255,255,.4);text-decoration:none;" onmouseover="this.style.color='#E8C49A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Cortech.be</a></p>
 </div>
+
 <script>
-function toggleMenu(){
-  var menu=document.getElementById('mobileMenu');
-  if(menu.style.display==='flex'){menu.style.display='none';}
-  else{menu.style.display='flex';}
+function toggleMenu() {
+  var menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
 }
 </script>
 </body>
