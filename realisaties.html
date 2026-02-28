@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Realisaties — Elektriciteitswerken Gastmans</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--warm:#C8894A;--warm-light:#E8C49A;--dark:#1A1612;--mid:#2E2820;--stone:#F2EDE6;--text:#3A332A;--muted:#8A7A6A;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--text);overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 4rem;background:rgba(26,22,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,137,74,0.15);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo svg{height:44px;width:auto;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--warm);transform:scaleX(0);transition:transform .25s;transform-origin:left;}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a.active{color:#fff;}
+.nav-cta{background:var(--warm)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:2px;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#A06830!important;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;}
+.mobile-menu{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(26,22,18,.98);z-index:99;padding:2rem;gap:1.5rem;}
+.mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;}
+
+.page-hero{padding:10rem 4rem 5rem;background:var(--dark);position:relative;overflow:hidden;}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to bottom,transparent,var(--stone));}
+.page-hero-bg{position:absolute;inset:0;opacity:.12;}
+.page-hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);}
+.page-hero .eyebrow{color:var(--warm);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;position:relative;z-index:1;}
+.page-hero .eyebrow::before{content:'';width:28px;height:1px;background:var(--warm);}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);color:#fff;line-height:1.1;position:relative;z-index:1;}
+.page-hero h1 em{font-style:italic;color:var(--warm-light);}
+.page-hero .sub{color:rgba(255,255,255,.45);font-size:1rem;font-weight:300;max-width:500px;margin-top:1rem;line-height:1.7;position:relative;z-index:1;}
+
+.filters{padding:3rem 4rem 0;display:flex;gap:.8rem;flex-wrap:wrap;}
+.filter-btn{background:transparent;border:1px solid rgba(0,0,0,.15);color:var(--muted);padding:.5rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all .25s;}
+.filter-btn:hover,.filter-btn.active{background:var(--warm);border-color:var(--warm);color:#fff;}
+
+.portfolio-section{padding:3rem 4rem 6rem;}
+.masonry{columns:3;column-gap:6px;line-height:0;}
+.masonry-item{break-inside:avoid;position:relative;overflow:hidden;margin-bottom:6px;cursor:pointer;display:block;}
+.masonry-item img{width:100%;height:auto;display:block;transition:transform .5s ease,filter .4s;filter:brightness(.85);}
+.masonry-item:hover img{transform:scale(1.04);filter:brightness(.5);}
+
+/* Overlay - contained within item, no overflow */
+.masonry-overlay{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:1rem 1.2rem;
+  background:linear-gradient(to top,rgba(20,16,12,.85) 0%,transparent 100%);
+  opacity:0;
+  transition:opacity .3s;
+  pointer-events:none;
+}
+.masonry-item:hover .masonry-overlay{opacity:1;}
+.m-tag{font-size:.6rem;color:var(--warm-light);letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:.2rem;}
+.m-title{font-family:'Playfair Display',serif;font-size:.95rem;color:#fff;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+.cta-banner{background:var(--warm);padding:5rem 4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.4rem);color:#fff;line-height:1.25;}
+.cta-banner p{color:rgba(255,255,255,.7);margin-top:.6rem;font-weight:300;}
+.btn{padding:.85rem 1.9rem;text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .3s;display:inline-block;}
+.btn-white{background:#fff;color:var(--warm);}
+.btn-white:hover{background:rgba(255,255,255,.9);transform:translateY(-2px);}
+
+footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;border-top:1px solid rgba(200,137,74,.1);}
+.footer-brand .logo-name{font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;}
+.footer-brand p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.7;margin-top:.8rem;max-width:240px;font-weight:300;}
+.footer-col h4{color:var(--warm-light);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-col ul a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.footer-col ul a:hover{color:var(--warm-light);}
+.footer-col ul li{color:rgba(255,255,255,.45);font-size:.88rem;}
+.footer-bottom{background:var(--dark);border-top:1px solid rgba(255,255,255,.05);padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{color:rgba(255,255,255,.2);font-size:.75rem;}
+
+/* LIGHTBOX */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;align-items:center;justify-content:center;padding:2rem;}
+.lightbox.open{display:flex;}
+.lb-inner{max-width:80vw;max-height:85vh;position:relative;}
+.lb-inner img{max-width:100%;max-height:85vh;object-fit:contain;display:block;}
+.lb-close{position:fixed;top:1.5rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;background:rgba(255,255,255,.1);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;}
+.lb-close:hover{background:var(--warm);}
+.lb-caption{color:rgba(255,255,255,.7);font-size:.85rem;margin-top:.8rem;text-align:center;}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-logo svg{height:36px;}
+  .page-hero{padding:7rem 2rem 4rem;}
+  .filters{padding:2rem 2rem 0;}
+  .portfolio-section{padding:2rem 2rem 4rem;}
+  .masonry{columns:2;}
+  .cta-banner{grid-template-columns:1fr;padding:3rem 2rem;text-align:center;}
+  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 2rem;}
+}
+@media(max-width:500px){.masonry{columns:1;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 340 55" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="26" cy="27" r="24" fill="none" stroke="#4a7c45" stroke-width="3"/>
+      <rect x="20" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="28" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="17" y="16" width="18" height="14" rx="2.5" fill="#4a7c45"/>
+      <path d="M26 30 Q26 44 14 50" fill="none" stroke="#4a7c45" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="30,18 23,29 27,29 21,41 31,26 27,26" fill="white"/>
+      <text x="58" y="20" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="11" fill="rgba(255,255,255,0.75)" letter-spacing="1.2">ELEKTRICITEITSWERKEN</text>
+      <text x="56" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="-0.5">GASTMANS</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="realisaties.html" class="active">Realisaties</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="diensten.html" onclick="toggleMenu()">Diensten</a>
+  <a href="realisaties.html" onclick="toggleMenu()">Realisaties</a>
+  <a href="over-ons.html" onclick="toggleMenu()">Over ons</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"><img src="images/img13.jpg" alt=""></div>
+  <p class="eyebrow">Portfolio</p>
+  <h1>Onze <em>realisaties</em></h1>
+  <p class="sub">Een selectie van afgewerkte projecten, van renovaties tot nieuwbouw, buitenverlichting en keuringen.</p>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" onclick="filterItems('all', this)">Alles</button>
+  <button class="filter-btn" onclick="filterItems('renovatie', this)">Renovatie</button>
+  <button class="filter-btn" onclick="filterItems('buitenverlichting', this)">Buitenverlichting</button>
+  <button class="filter-btn" onclick="filterItems('badkamer', this)">Badkamer</button>
+  <button class="filter-btn" onclick="filterItems('keuken', this)">Keuken &amp; living</button>
+</div>
+
+<section class="portfolio-section">
+  <div class="masonry" id="masonryGrid">
+
+    <div class="masonry-item" data-cat="buitenverlichting" onclick="openLb('images/img11.jpg','Terrasverlichting, Mol','Buitenverlichting')">
+      <img src="images/img11.jpg" alt="Terrasverlichting">
+      <div class="masonry-overlay">
+        <span class="m-tag">Buitenverlichting</span>
+        <span class="m-title">Terrasverlichting</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="renovatie" onclick="openLb('images/img09.jpg','Oude installatie voor vervanging','Renovatie')">
+      <img src="images/img09.jpg" alt="Oude zekeringkast">
+      <div class="masonry-overlay">
+        <span class="m-tag">Renovatie</span>
+        <span class="m-title">Voor: oude installatie</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="badkamer" onclick="openLb('images/img01.jpg','Badkamer installatie','Badkamer')">
+      <img src="images/img01.jpg" alt="Badkamer">
+      <div class="masonry-overlay">
+        <span class="m-tag">Badkamer</span>
+        <span class="m-title">Badkamer renovatie</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="buitenverlichting" onclick="openLb('images/img13.jpg','Eethoek tuin bij nacht','Buitenverlichting')">
+      <img src="images/img13.jpg" alt="Tuin bij nacht">
+      <div class="masonry-overlay">
+        <span class="m-tag">Buitenverlichting</span>
+        <span class="m-title">Eethoek tuin</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="renovatie" onclick="openLb('images/img10.jpg','Nieuwe zekeringkast na renovatie','Renovatie')">
+      <img src="images/img10.jpg" alt="Nieuwe zekeringkast">
+      <div class="masonry-overlay">
+        <span class="m-tag">Renovatie</span>
+        <span class="m-title">Na: nieuwe zekeringkast</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="keuken" onclick="openLb('images/img06.jpg','Keukeninstallatie','Keuken & living')">
+      <img src="images/img06.jpg" alt="Keuken">
+      <div class="masonry-overlay">
+        <span class="m-tag">Keuken &amp; living</span>
+        <span class="m-title">Keukeninstallatie</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="buitenverlichting" onclick="openLb('images/img15.jpg','Tuinverlichting overzicht','Buitenverlichting')">
+      <img src="images/img15.jpg" alt="Tuin bij nacht overzicht">
+      <div class="masonry-overlay">
+        <span class="m-tag">Buitenverlichting</span>
+        <span class="m-title">Tuinverlichting totaal</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="badkamer" onclick="openLb('images/img07.jpg','Inloopdouche verlichting','Badkamer')">
+      <img src="images/img07.jpg" alt="Douche">
+      <div class="masonry-overlay">
+        <span class="m-tag">Badkamer</span>
+        <span class="m-title">Inloopdouche</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="keuken" onclick="openLb('images/img04.jpg','Open keuken met inbouwverlichting','Keuken & living')">
+      <img src="images/img04.jpg" alt="Keuken eethoek">
+      <div class="masonry-overlay">
+        <span class="m-tag">Keuken &amp; living</span>
+        <span class="m-title">Open keuken</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="badkamer" onclick="openLb('images/img14.jpg','LED-spiegel badkamer','Badkamer')">
+      <img src="images/img14.jpg" alt="Badkamer LED spiegel">
+      <div class="masonry-overlay">
+        <span class="m-tag">Badkamer</span>
+        <span class="m-title">LED-spiegel</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="keuken" onclick="openLb('images/img03.jpg','Woonkamer verlichting','Keuken & living')">
+      <img src="images/img03.jpg" alt="Living eetplaats">
+      <div class="masonry-overlay">
+        <span class="m-tag">Keuken &amp; living</span>
+        <span class="m-title">Woonkamer</span>
+      </div>
+    </div>
+
+    <div class="masonry-item" data-cat="renovatie" onclick="openLb('images/img12.jpg','Installatie voor aanpak','Renovatie')">
+      <img src="images/img12.jpg" alt="Zekeringkast renovatie">
+      <div class="masonry-overlay">
+        <span class="m-tag">Renovatie</span>
+        <span class="m-title">Installatie voor aanpak</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLb()">
+  <div class="lb-inner" onclick="event.stopPropagation()">
+    <img id="lbImg" src="" alt="">
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+  <div class="lb-close" onclick="closeLb()">&#x2715;</div>
+</div>
+
+<div class="cta-banner">
+  <div>
+    <h2>Ook zulke resultaten in uw project?</h2>
+    <p>Neem vrijblijvend contact op voor een offerte op maat.</p>
+  </div>
+  <a href="contact.html" class="btn btn-white">Offerte aanvragen &rarr;</a>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <div class="logo-name">Elektriciteitswerken Gastmans</div>
+    <p>Vakkundige elektriciteitswerken voor particulieren en bedrijven in de regio Mol en omstreken.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Pagina's</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="diensten.html">Diensten</a></li>
+      <li><a href="realisaties.html">Realisaties</a></li>
+      <li><a href="over-ons.html">Over ons</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li>+32 493 74 99 22</li>
+      <li><a href="mailto:michiel.gastmans@hotmail.com" style="color:rgba(255,255,255,.45);text-decoration:none;">michiel.gastmans@hotmail.com</a></li>
+      <li>OLV-straat 48, 2400 Mol</li>
+      <li>BTW: BE1012.898.051</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>&copy; 2025 Elektriciteitswerken Gastmans &mdash; Alle rechten voorbehouden</p>
+  <p>BTW BE1012.898.051 &nbsp;|&nbsp; Website door <a href="https://cortech.be" target="_blank" rel="noopener" style="color:rgba(255,255,255,.4);text-decoration:none;" onmouseover="this.style.color='#E8C49A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Cortech.be</a></p>
+</div>
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById('mobileMenu');
+  if (menu.style.display === 'flex') {
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'flex';
+  }
+}
+
+function openLb(src, caption, tag) {
+  document.getElementById('lbImg').src = src;
+  document.getElementById('lbCaption').textContent = tag + ' — ' + caption;
+  document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLb() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+function filterItems(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  document.querySelectorAll('.masonry-item').forEach(function(item) {
+    if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

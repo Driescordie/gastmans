@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Over ons — Elektriciteitswerken Gastmans</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--warm:#C8894A;--warm-light:#E8C49A;--dark:#1A1612;--mid:#2E2820;--stone:#F2EDE6;--text:#3A332A;--muted:#8A7A6A;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--text);overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(26,22,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,137,74,0.15);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--warm);transform:scaleX(0);transition:transform .25s;transform-origin:left;}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a.active{color:#fff;}
+.nav-cta{background:var(--warm)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:2px;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#A06830!important;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;}
+.mobile-menu{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(26,22,18,.98);z-index:99;flex-direction:column;padding:2rem;gap:1.5rem;}
+.mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;}
+.mobile-menu.open{display:flex;}
+
+/* HERO SPLIT */
+.hero-split{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;}
+.hs-img{position:relative;overflow:hidden;}
+.hs-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.7);}
+.hs-img::after{content:'';position:absolute;right:0;top:0;bottom:0;width:80px;background:linear-gradient(to right,transparent,var(--stone));}
+.hs-content{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 5rem;}
+.eyebrow{color:var(--warm);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--warm);}
+h1,h2{font-family:'Playfair Display',serif;}
+h1{font-size:clamp(2.4rem,4vw,4rem);color:var(--dark);line-height:1.12;margin-bottom:1rem;}
+h1 em{font-style:italic;color:var(--warm);}
+.lead{font-size:1.05rem;color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:1.5rem;}
+.hs-content p{color:var(--text);line-height:1.75;font-weight:300;margin-bottom:1rem;}
+
+/* VALUES */
+.values{background:var(--dark);padding:6rem 4rem;}
+.values .eyebrow{color:var(--warm-light);}
+.values .eyebrow::before{background:var(--warm-light);}
+.values h2{font-size:clamp(1.8rem,2.5vw,2.6rem);color:#fff;margin-bottom:3rem;}
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);}
+.val{background:var(--mid);padding:3rem 2.5rem;}
+.val-icon{font-size:2.2rem;margin-bottom:1.2rem;display:block;}
+.val h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:#fff;margin-bottom:.7rem;}
+.val p{color:rgba(255,255,255,.4);font-size:.87rem;line-height:1.7;font-weight:300;}
+
+/* STATS */
+.stats-section{padding:5rem 4rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(0,0,0,.04);}
+.stat-card{background:#fff;padding:3rem 2rem;text-align:center;}
+.stat-card .n{font-family:'Playfair Display',serif;font-size:3rem;color:var(--warm);display:block;}
+.stat-card .l{font-size:.75rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:.5rem;}
+
+/* AREI STRIP */
+.arei{background:var(--warm);padding:4rem;display:grid;grid-template-columns:auto 1fr;gap:3rem;align-items:center;}
+.arei-icon{font-size:4rem;opacity:.8;}
+.arei-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2vw,2rem);color:#fff;margin-bottom:.7rem;}
+.arei-text p{color:rgba(255,255,255,.75);font-weight:300;line-height:1.65;}
+
+/* TESTIMONIAL */
+.testimonials{padding:6rem 4rem;background:var(--stone);}
+.testimonials .eyebrow{margin-bottom:.8rem;}
+.testimonials h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);color:var(--dark);margin-bottom:3rem;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.testi{background:#fff;padding:2.5rem;position:relative;}
+.testi::before{content:'"';font-family:'Playfair Display',serif;font-size:5rem;color:rgba(200,137,74,.15);position:absolute;top:1rem;left:1.5rem;line-height:1;}
+.testi-text{color:var(--text);line-height:1.7;font-size:.93rem;position:relative;z-index:1;margin-bottom:1.5rem;font-weight:300;}
+.testi-author{display:flex;align-items:center;gap.8rem;}
+.testi-name{font-weight:500;font-size:.85rem;color:var(--dark);}
+.testi-loc{font-size:.75rem;color:var(--muted);}
+.stars{color:var(--warm);margin-bottom:.5rem;font-size:.9rem;}
+
+/* CTA */
+.cta-banner{background:var(--dark);padding:5rem 4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.4rem);color:#fff;line-height:1.25;}
+.cta-banner p{color:rgba(255,255,255,.45);margin-top:.6rem;font-weight:300;}
+.btn{padding:.85rem 1.9rem;text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .3s;display:inline-block;}
+.btn-warm{background:var(--warm);color:#fff;}
+.btn-warm:hover{background:#A06830;transform:translateY(-2px);}
+
+footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;border-top:1px solid rgba(200,137,74,.1);}
+.footer-brand .logo-name{font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;}
+.footer-brand p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.7;margin-top:.8rem;max-width:240px;font-weight:300;}
+.footer-col h4{color:var(--warm-light);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-col ul a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.footer-col ul a:hover{color:var(--warm-light);}
+.footer-col ul li{color:rgba(255,255,255,.45);font-size:.88rem;}
+.footer-bottom{background:var(--dark);border-top:1px solid rgba(255,255,255,.05);padding:1.5rem 4rem;display:flex;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,.2);font-size:.75rem;}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero-split{grid-template-columns:1fr;min-height:auto;}
+  .hs-img{height:50vw;}
+  .hs-img::after{display:none;}
+  .hs-content{padding:4rem 2rem;}
+  .val-grid{grid-template-columns:1fr;}
+  .values,.testimonials{padding:4rem 2rem;}
+  .stats-section{grid-template-columns:1fr 1fr;padding:0;}
+  .stat-card{padding:2.5rem 1.5rem;}
+  .arei{grid-template-columns:1fr;padding:3rem 2rem;text-align:center;}
+  .testi-grid{grid-template-columns:1fr;}
+  .cta-banner{grid-template-columns:1fr;padding:3rem 2rem;text-align:center;}
+  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 340 55" xmlns="http://www.w3.org/2000/svg" style="height:44px;width:auto;">
+      <circle cx="26" cy="27" r="24" fill="none" stroke="#4a7c45" stroke-width="3"/>
+      <rect x="20" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="28" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="17" y="16" width="18" height="14" rx="2.5" fill="#4a7c45"/>
+      <path d="M26 30 Q26 44 14 50" fill="none" stroke="#4a7c45" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="30,18 23,29 27,29 21,41 31,26 27,26" fill="white"/>
+      <text x="58" y="20" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="11" fill="rgba(255,255,255,0.75)" letter-spacing="1.2">ELEKTRICITEITSWERKEN</text>
+      <text x="56" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="-0.5">GASTMANS</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="realisaties.html">Realisaties</a></li>
+    <li><a href="over-ons.html" class="active">Over ons</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="realisaties.html">Realisaties</a>
+  <a href="over-ons.html">Over ons</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO SPLIT -->
+<section class="hero-split">
+  <div class="hs-img">
+    <img src="images/img11.jpg" alt="Terrasverlighting bij nacht">
+  </div>
+  <div class="hs-content">
+    <p class="eyebrow">Over ons</p>
+    <h1>Michiel <em>Gastmans</em></h1>
+    <p class="lead">Vakman, ondernemer en elektriciteitsspecialist met hart voor het vak en voor zijn klanten.</p>
+    <p>Elektriciteitswerken Gastmans is een éénmanszaak gevestigd in Mol, met een duidelijke missie: kwaliteitsvolle elektriciteitswerken leveren die de tand des tijds doorstaan. Elk project wordt persoonlijk begeleid, van het eerste contact tot de eindkeuring.</p>
+    <p>Met jarenlange ervaring in nieuwbouw, renovaties, keuringen en buitenverlichting bouwde Michiel een stevige reputatie op in de regio Antwerpen. Klanten waarderen de directe communicatie, de nette afwerking en de eerlijke prijzen.</p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <p class="eyebrow">Onze waarden</p>
+  <h2>Waarom kiezen voor Gastmans?</h2>
+  <div class="val-grid">
+    <div class="val">
+      <span class="val-icon">🎯</span>
+      <h3>Vakmanschap</h3>
+      <p>Elke installatie wordt met dezelfde zorg uitgevoerd, of het nu om een kleine herstelling gaat of een volledig nieuwbouwproject. Halve klus bestaat niet bij ons.</p>
+    </div>
+    <div class="val">
+      <span class="val-icon">🤝</span>
+      <h3>Persoonlijk contact</h3>
+      <p>U spreekt altijd met Michiel zelf. Geen call center, geen tussenpersonen. Duidelijke afspraken, eerlijke communicatie en respect voor uw thuis of bedrijf.</p>
+    </div>
+    <div class="val">
+      <span class="val-icon">📋</span>
+      <h3>Transparante prijzen</h3>
+      <p>U ontvangt altijd een gedetailleerde offerte vóór de werken beginnen. Geen verrassingen achteraf. Wat we afspreken, dat doen we.</p>
+    </div>
+    <div class="val">
+      <span class="val-icon">⚡</span>
+      <h3>Snelle interventie</h3>
+      <p>We beantwoorden elke aanvraag binnen 24 uur. Bij urgente situaties proberen we zo snel mogelijk langs te komen.</p>
+    </div>
+    <div class="val">
+      <span class="val-icon">✅</span>
+      <h3>AREI conform</h3>
+      <p>Elke installatie voldoet aan het Algemeen Reglement op de Elektrische Installaties. U ontvangt altijd een conformiteitsattest na de keuring.</p>
+    </div>
+    <div class="val">
+      <span class="val-icon">🌿</span>
+      <h3>Duurzaam denken</h3>
+      <p>We werken mee aan een duurzamere toekomst: energiezuinige installaties, slimme sturing en AREI-conforme keuringen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stat-card"><span class="n">10+</span><span class="l">Jaar ervaring</span></div>
+  <div class="stat-card"><span class="n">500+</span><span class="l">Projecten afgerond</span></div>
+  <div class="stat-card"><span class="n">100%</span><span class="l">Klanttevredenheid</span></div>
+  <div class="stat-card"><span class="n">24u</span><span class="l">Reactietijd</span></div>
+</div>
+
+<!-- AREI -->
+<div class="arei">
+  <div class="arei-icon">🏅</div>
+  <div class="arei-text">
+    <h2>AREI-conform & gecertificeerd</h2>
+    <p>Alle werken worden uitgevoerd conform het Algemeen Reglement op de Elektrische Installaties (AREI). Na afronding van elk project wordt een officiële keuring gepland en ontvangt u een conformiteitsattest, noodzakelijk bij verkoop of verhuur van uw woning. BTW-nummer: BE1012.898.051</p>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <p class="eyebrow">Tevreden klanten</p>
+  <h2>Wat zeggen onze klanten?</h2>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Michiel heeft de volledige elektrische installatie van onze renovatie verzorgd. Netjes, snel en conform. Sterk aanbevolen!</p>
+      <div class="testi-name">Familie De Smedt</div>
+      <div class="testi-loc">Mol, renovatie woning</div>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">Onze keuring is perfect geïnstalleerd, inclusief aanpassing van de groepenkast. Heel professioneel en vlotte communicatie.</p>
+      <div class="testi-name">Jan Willems</div>
+      <div class="testi-loc">Geel, keuring installatie</div>
+    </div>
+    <div class="testi">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">De tuinverlichting ziet er prachtig uit! Michiel dacht actief mee over de plaatsing voor het mooiste effect. Erg tevreden.</p>
+      <div class="testi-name">Sarah & Tom</div>
+      <div class="testi-loc">Herentals, buitenverlichting</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-banner">
+  <div>
+    <h2>Klaar om samen te werken?</h2>
+    <p>Neem contact op voor een vrijblijvende offerte of stel uw vragen.</p>
+  </div>
+  <a href="contact.html" class="btn btn-warm">Neem contact op →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <div class="logo-name">Elektriciteitswerken Gastmans</div>
+    <p>Vakkundige elektriciteitswerken voor particulieren en bedrijven in de regio Mol en omstreken.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Pagina's</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="diensten.html">Diensten</a></li>
+      <li><a href="realisaties.html">Realisaties</a></li>
+      <li><a href="over-ons.html">Over ons</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li>+32 493 74 99 22</li>
+      <li><a href="mailto:michiel.gastmans@hotmail.com" style="color:rgba(255,255,255,.45);text-decoration:none;">michiel.gastmans@hotmail.com</a></li>
+      <li>OLV-straat 48, 2400 Mol</li>
+      <li>BTW: BE1012.898.051</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Elektriciteitswerken Gastmans</p>
+  <p>BTW BE1012.898.051 &nbsp;|&nbsp; Website door <a href="https://cortech.be" target="_blank" rel="noopener" style="color:rgba(255,255,255,.4);text-decoration:none;" onmouseover="this.style.color='#E8C49A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Cortech.be</a></p>
+</div>
+<script>
+function toggleMenu(){
+  var menu=document.getElementById('mobileMenu');
+  if(menu.style.display==='flex'){menu.style.display='none';}
+  else{menu.style.display='flex';}
+}
+</script>
+</body>
+</html>

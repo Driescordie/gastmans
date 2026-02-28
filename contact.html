@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Contact — Elektriciteitswerken Gastmans</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--warm:#C8894A;--warm-light:#E8C49A;--dark:#1A1612;--mid:#2E2820;--stone:#F2EDE6;--text:#3A332A;--muted:#8A7A6A;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--text);overflow-x:hidden;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 4rem;background:rgba(26,22,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,137,74,0.15);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo svg{height:44px;width:auto;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--warm);transform:scaleX(0);transition:transform .25s;transform-origin:left;}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a.active{color:#fff;}
+.nav-cta{background:var(--warm)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:2px;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#A06830!important;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;}
+.mobile-menu{display:none;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(26,22,18,.98);z-index:99;padding:2rem;gap:1.5rem;}
+.mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;}
+
+.page-hero{padding:10rem 4rem 6rem;background:var(--dark);position:relative;overflow:hidden;text-align:center;}
+.page-hero-bg{position:absolute;inset:0;opacity:.1;}
+.page-hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to bottom,transparent,var(--stone));}
+.eyebrow{color:var(--warm);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;justify-content:center;gap:.8rem;margin-bottom:.8rem;position:relative;z-index:1;}
+.eyebrow::before,.eyebrow::after{content:'';flex:1;max-width:40px;height:1px;background:var(--warm);}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);color:#fff;line-height:1.1;position:relative;z-index:1;}
+.page-hero h1 em{font-style:italic;color:var(--warm-light);}
+.page-hero .sub{color:rgba(255,255,255,.45);font-size:1rem;font-weight:300;max-width:450px;margin:1rem auto 0;line-height:1.7;position:relative;z-index:1;}
+
+.contact-wrap{padding:6rem 4rem;display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;align-items:start;}
+.contact-info-side .title{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--dark);margin-bottom:.6rem;}
+.contact-info-side .sub{color:var(--muted);font-weight:300;line-height:1.7;margin-bottom:2.5rem;}
+.contact-cards{display:flex;flex-direction:column;gap:1rem;}
+.cc{display:flex;gap:1.2rem;align-items:center;background:#fff;padding:1.5rem;transition:transform .25s,box-shadow .25s;}
+.cc:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.07);}
+.cc-icon{width:48px;height:48px;background:rgba(200,137,74,.1);border:1px solid rgba(200,137,74,.2);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.cc-label{font-size:.68rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.2rem;}
+.cc-val{font-size:.95rem;color:var(--dark);font-weight:500;text-decoration:none;display:block;}
+.cc-val:hover{color:var(--warm);}
+.hours{margin-top:2rem;background:#fff;padding:1.8rem;}
+.hours h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);margin-bottom:1rem;}
+.hours-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid rgba(0,0,0,.05);font-size:.88rem;}
+.hours-row:last-child{border-bottom:none;}
+.hours-day{color:var(--muted);}
+.hours-time{color:var(--dark);font-weight:500;}
+
+.form-card{background:#fff;padding:3rem;box-shadow:0 4px 40px rgba(0,0,0,.06);}
+.form-card h2{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--dark);margin-bottom:.5rem;}
+.form-card .sub{color:var(--muted);font-size:.88rem;font-weight:300;margin-bottom:2rem;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fg{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;}
+.fg label{font-size:.72rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:500;}
+.fg input,.fg textarea,.fg select{border:1px solid rgba(0,0,0,.1);background:var(--stone);padding:.8rem 1rem;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--dark);border-radius:2px;outline:none;transition:border-color .25s;resize:none;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--warm);background:#fff;}
+.fg textarea{min-height:110px;}
+.btn{padding:.9rem 2rem;text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .3s;display:inline-block;cursor:pointer;border:none;width:100%;text-align:center;}
+.btn-warm{background:var(--warm);color:#fff;}
+.btn-warm:hover{background:#A06830;transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,137,74,.3);}
+.success-msg{display:none;background:rgba(58,90,58,.1);border:1px solid rgba(58,90,58,.2);color:#2A5A2A;padding:1rem 1.2rem;border-radius:2px;margin-top:1rem;font-size:.88rem;}
+.success-msg.show{display:block;}
+
+.map-section{padding:0 4rem 6rem;}
+.map-section h2{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--dark);margin-bottom:1.2rem;}
+.map-wrap{height:360px;background:var(--mid);overflow:hidden;position:relative;}
+.map-wrap iframe{width:100%;height:100%;border:0;filter:grayscale(.4) contrast(1.05);}
+.map-badge{position:absolute;top:1.2rem;left:1.2rem;background:rgba(26,22,18,.88);backdrop-filter:blur(8px);padding:.8rem 1.2rem;border-left:3px solid var(--warm);}
+.map-badge p{color:#fff;font-size:.85rem;line-height:1.5;}
+.map-badge small{color:rgba(255,255,255,.5);font-size:.72rem;}
+
+footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;border-top:1px solid rgba(200,137,74,.1);}
+.footer-brand .logo-name{font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;}
+.footer-brand p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.7;margin-top:.8rem;max-width:240px;font-weight:300;}
+.footer-col h4{color:var(--warm-light);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-col ul a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.footer-col ul a:hover{color:var(--warm-light);}
+.footer-col ul li{color:rgba(255,255,255,.45);font-size:.88rem;}
+.footer-bottom{background:var(--dark);border-top:1px solid rgba(255,255,255,.05);padding:1.5rem 4rem;display:flex;justify-content:space-between;}
+.footer-bottom p{color:rgba(255,255,255,.2);font-size:.75rem;}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-logo svg{height:36px;}
+  .page-hero{padding:7rem 2rem 5rem;}
+  .contact-wrap{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem;}
+  .map-section{padding:0 2rem 4rem;}
+  .form-row{grid-template-columns:1fr;}
+  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 340 55" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="26" cy="27" r="24" fill="none" stroke="#4a7c45" stroke-width="3"/>
+      <rect x="20" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="28" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="17" y="16" width="18" height="14" rx="2.5" fill="#4a7c45"/>
+      <path d="M26 30 Q26 44 14 50" fill="none" stroke="#4a7c45" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="30,18 23,29 27,29 21,41 31,26 27,26" fill="white"/>
+      <text x="58" y="20" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="11" fill="rgba(255,255,255,0.75)" letter-spacing="1.2">ELEKTRICITEITSWERKEN</text>
+      <text x="56" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="-0.5">GASTMANS</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="realisaties.html">Realisaties</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+    <li><a href="contact.html" class="nav-cta active">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="diensten.html" onclick="toggleMenu()">Diensten</a>
+  <a href="realisaties.html" onclick="toggleMenu()">Realisaties</a>
+  <a href="over-ons.html" onclick="toggleMenu()">Over ons</a>
+  <a href="contact.html" onclick="toggleMenu()">Contact</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"><img src="images/img15.jpg" alt=""></div>
+  <p class="eyebrow">Neem contact op</p>
+  <h1>Laten we <em>samenwerken</em></h1>
+  <p class="sub">Vrijblijvende offerte, vragen of een plaatsbezoek plannen. We antwoorden binnen 24 uur.</p>
+</div>
+
+<section class="contact-wrap">
+  <div class="contact-info-side">
+    <h2 class="title">Contactgegevens</h2>
+    <p class="sub">U kunt ons bereiken via telefoon, e-mail of het formulier. We plannen graag een plaatsbezoek om uw project te bespreken.</p>
+    <div class="contact-cards">
+      <div class="cc">
+        <div class="cc-icon">📞</div>
+        <div>
+          <span class="cc-label">Telefoon / GSM</span>
+          <a href="tel:+32493749922" class="cc-val">+32 493 74 99 22</a>
+        </div>
+      </div>
+      <div class="cc">
+        <div class="cc-icon">✉️</div>
+        <div>
+          <span class="cc-label">E-mail</span>
+          <a href="mailto:michiel.gastmans@hotmail.com" class="cc-val">michiel.gastmans@hotmail.com</a>
+        </div>
+      </div>
+      <div class="cc">
+        <div class="cc-icon">📍</div>
+        <div>
+          <span class="cc-label">Adres</span>
+          <span class="cc-val">Onze Lieve Vrouwstraat 48, 2400 Mol</span>
+        </div>
+      </div>
+      <div class="cc">
+        <div class="cc-icon">🧾</div>
+        <div>
+          <span class="cc-label">BTW-nummer</span>
+          <span class="cc-val">BE1012.898.051</span>
+        </div>
+      </div>
+    </div>
+    <div class="hours">
+      <h3>Bereikbaarheid</h3>
+      <div class="hours-row"><span class="hours-day">Maandag – vrijdag</span><span class="hours-time">07:00 – 18:00</span></div>
+      <div class="hours-row"><span class="hours-day">Zaterdag</span><span class="hours-time">Op afspraak</span></div>
+      <div class="hours-row"><span class="hours-day">Zondag</span><span class="hours-time">Gesloten</span></div>
+      <div class="hours-row" style="margin-top:.5rem;"><span class="hours-day" style="font-size:.8rem;color:#C8894A;">📬 E-mail beantwoord binnen 24u</span></div>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <h2>Offerte aanvragen</h2>
+    <p class="sub">Vul het formulier in en we nemen zo snel mogelijk contact met u op.</p>
+    <div class="form-row">
+      <div class="fg">
+        <label>Voornaam *</label>
+        <input type="text" id="fname" placeholder="Jan">
+      </div>
+      <div class="fg">
+        <label>Naam *</label>
+        <input type="text" id="lname" placeholder="Peeters">
+      </div>
+    </div>
+    <div class="fg">
+      <label>E-mail *</label>
+      <input type="email" id="email" placeholder="jan.peeters@voorbeeld.be">
+    </div>
+    <div class="fg">
+      <label>Telefoon</label>
+      <input type="tel" id="phone" placeholder="+32 4xx xx xx xx">
+    </div>
+    <div class="fg">
+      <label>Type werk *</label>
+      <select id="service">
+        <option value="">Selecteer een dienst...</option>
+        <option>Nieuwbouw - volledige installatie</option>
+        <option>Renovatie - modernisering installatie</option>
+        <option>Buitenverlichting - tuin/terras/gevel</option>
+        <option>Keuring &amp; conformiteitsattest</option>
+        <option>Kleine herstelling of bijwerking</option>
+        <option>Andere / combinatie</option>
+      </select>
+    </div>
+    <div class="fg">
+      <label>Adres van de werken</label>
+      <input type="text" id="address" placeholder="Straat, gemeente">
+    </div>
+    <div class="fg">
+      <label>Uw bericht *</label>
+      <textarea id="message" placeholder="Beschrijf kort uw project: wat zijn de werken, wanneer plant u te starten, zijn er specifieke vragen?"></textarea>
+    </div>
+    <button class="btn btn-warm" onclick="submitForm()">Offerte aanvragen &rarr;</button>
+    <div class="success-msg" id="successMsg">&#10003; Bedankt voor uw aanvraag! We nemen contact op binnen 24 uur.</div>
+  </div>
+</section>
+
+<div class="map-section">
+  <h2>Onze locatie — Mol</h2>
+  <div class="map-wrap">
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=5.07,51.17,5.13,51.22&layer=mapnik&marker=51.1975,5.1009" allowfullscreen loading="lazy" title="Kaart Mol"></iframe>
+    <div class="map-badge">
+      <p>Elektriciteitswerken Gastmans</p>
+      <small>OLV-straat 48, 2400 Mol</small>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-brand">
+    <div class="logo-name">Elektriciteitswerken Gastmans</div>
+    <p>Vakkundige elektriciteitswerken voor particulieren en bedrijven in de regio Mol en omstreken.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Pagina's</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="diensten.html">Diensten</a></li>
+      <li><a href="realisaties.html">Realisaties</a></li>
+      <li><a href="over-ons.html">Over ons</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li>+32 493 74 99 22</li>
+      <li><a href="mailto:michiel.gastmans@hotmail.com" style="color:rgba(255,255,255,.45);text-decoration:none;">michiel.gastmans@hotmail.com</a></li>
+      <li>OLV-straat 48, 2400 Mol</li>
+      <li>BTW: BE1012.898.051</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>&copy; 2025 Elektriciteitswerken Gastmans &mdash; Alle rechten voorbehouden</p>
+  <p>BTW BE1012.898.051 &nbsp;|&nbsp; Website door <a href="https://cortech.be" target="_blank" rel="noopener" style="color:rgba(255,255,255,.4);text-decoration:none;" onmouseover="this.style.color='#E8C49A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Cortech.be</a></p>
+</div>
+
+<script>
+function toggleMenu() {
+  var menu = document.getElementById('mobileMenu');
+  if (menu.style.display === 'flex') {
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'flex';
+  }
+}
+
+function submitForm() {
+  var fname   = document.getElementById('fname').value.trim();
+  var lname   = document.getElementById('lname').value.trim();
+  var email   = document.getElementById('email').value.trim();
+  var phone   = document.getElementById('phone').value.trim();
+  var service = document.getElementById('service').value;
+  var address = document.getElementById('address').value.trim();
+  var message = document.getElementById('message').value.trim();
+
+  if (!fname || !email || !service || !message) {
+    alert('Vul alle verplichte velden in (*).');
+    return;
+  }
+
+  var fullName = fname + (lname ? ' ' + lname : '');
+  var subject  = encodeURIComponent('Offerte aanvraag - ' + service);
+  var body     = encodeURIComponent(
+    'Naam: ' + fullName + '\n' +
+    'E-mail: ' + email + '\n' +
+    (phone ? 'Telefoon: ' + phone + '\n' : '') +
+    'Dienst: ' + service + '\n' +
+    (address ? 'Adres werken: ' + address + '\n' : '') +
+    '\nBericht:\n' + message
+  );
+
+  window.location.href = 'mailto:michiel.gastmans@hotmail.com?subject=' + subject + '&body=' + body;
+  document.getElementById('successMsg').classList.add('show');
+}
+</script>
+</body>
+</html>

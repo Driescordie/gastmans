@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elektriciteitswerken Gastmans — Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --warm: #C8894A;
+  --warm-light: #E8C49A;
+  --dark: #1A1612;
+  --mid: #2E2820;
+  --stone: #F2EDE6;
+  --text: #3A332A;
+  --muted: #8A7A6A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--stone);color:var(--text);overflow-x:hidden;}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(26,22,18,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,137,74,0.15);}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;}
+.nav-logo-icon{width:38px;height:38px;background:var(--warm);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.nav-logo-name{font-family:'Playfair Display',serif;color:#fff;font-size:1.05rem;line-height:1.2;}
+.nav-logo-name small{display:block;font-family:'DM Sans',sans-serif;font-weight:300;font-size:.65rem;color:rgba(255,255,255,.4);letter-spacing:.18em;text-transform:uppercase;margin-top:.1rem;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center;}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:400;transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--warm);transform:scaleX(0);transition:transform .25s;transform-origin:left;}
+.nav-links a:hover{color:#fff;}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1);}
+.nav-links a.active{color:#fff;}
+.nav-cta{background:var(--warm)!important;color:#fff!important;padding:.6rem 1.4rem;border-radius:2px;}
+.nav-cta::after{display:none!important;}
+.nav-cta:hover{background:#A06830!important;}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem;}
+.nav-hamburger span{width:22px;height:2px;background:#fff;transition:.3s;}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(26,22,18,.98);z-index:99;flex-direction:column;padding:2rem;gap:1.5rem;border-bottom:1px solid rgba(200,137,74,.2);}
+.mobile-menu a{color:rgba(255,255,255,.75);text-decoration:none;font-size:1rem;letter-spacing:.06em;text-transform:uppercase;}
+.mobile-menu.open{display:flex;}
+
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hero-left{background:var(--dark);display:flex;flex-direction:column;justify-content:center;padding:8rem 5rem 5rem;position:relative;z-index:1;}
+.hero-left::after{content:'';position:absolute;right:-40px;top:0;bottom:0;width:80px;background:linear-gradient(to right,var(--dark),transparent);z-index:2;}
+.hero-eyebrow{display:flex;align-items:center;gap:.8rem;color:var(--warm);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:1.8rem;animation:fadeUp .7s ease both .1s;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--warm);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,4vw,4.2rem);color:#fff;line-height:1.12;margin-bottom:1.6rem;animation:fadeUp .7s ease both .25s;}
+.hero-title em{font-style:italic;color:var(--warm-light);}
+.hero-desc{color:rgba(255,255,255,.5);font-size:.97rem;line-height:1.75;max-width:370px;margin-bottom:2.5rem;font-weight:300;animation:fadeUp .7s ease both .4s;}
+.hero-btns{display:flex;gap:1rem;align-items:center;animation:fadeUp .7s ease both .55s;}
+.btn{padding:.85rem 1.9rem;text-decoration:none;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:all .3s;display:inline-block;cursor:pointer;border:none;}
+.btn-warm{background:var(--warm);color:#fff;}
+.btn-warm:hover{background:#A06830;transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,137,74,.3);}
+.btn-outline{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.2);}
+.btn-outline:hover{color:#fff;border-color:rgba(255,255,255,.5);}
+.hero-right{position:relative;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:55% 45%;height:100%;gap:3px;}
+.hero-cell{overflow:hidden;position:relative;}
+.hero-cell.wide{grid-column:span 2;}
+.hero-cell img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .4s;filter:brightness(.8);}
+.hero-cell:hover img{transform:scale(1.05);filter:brightness(1);}
+.hero-badge{position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(26,22,18,.8);backdrop-filter:blur(8px);color:#fff;padding:.5rem 1rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;border-left:2px solid var(--warm);}
+
+/* ─── STATS ─── */
+.stats{background:var(--mid);padding:2.5rem 4rem;display:flex;justify-content:center;gap:0;}
+.stat{flex:1;max-width:220px;text-align:center;padding:0 2rem;border-right:1px solid rgba(255,255,255,.06);}
+.stat:last-child{border-right:none;}
+.stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--warm);display:block;line-height:1;}
+.stat-l{font-size:.7rem;color:rgba(255,255,255,.4);letter-spacing:.12em;text-transform:uppercase;margin-top:.4rem;display:block;}
+
+/* ─── INTRO STRIP ─── */
+.intro{padding:6rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.intro-text .eyebrow{color:var(--warm);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
+.intro-text .eyebrow::before{content:'';width:28px;height:1px;background:var(--warm);}
+.intro-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);color:var(--dark);line-height:1.2;margin-bottom:1.2rem;}
+.intro-text p{color:var(--muted);line-height:1.75;font-weight:300;margin-bottom:1.5rem;}
+.intro-img{position:relative;}
+.intro-img img{width:100%;height:380px;object-fit:cover;display:block;}
+.intro-img::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:2px solid rgba(200,137,74,.3);z-index:-1;}
+
+/* ─── SERVICES PREVIEW ─── */
+.services-prev{background:var(--dark);padding:6rem 4rem;}
+.services-prev .eyebrow{color:var(--warm-light);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
+.services-prev .eyebrow::before{content:'';width:28px;height:1px;background:var(--warm-light);}
+.services-prev h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);color:#fff;margin-bottom:.8rem;}
+.services-prev p.sub{color:rgba(255,255,255,.4);font-weight:300;margin-bottom:3rem;}
+.services-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.04);}
+.svc{background:var(--mid);padding:2.5rem 2rem;transition:all .35s;position:relative;overflow:hidden;}
+.svc::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--warm),var(--warm-light));transform:scaleX(0);transition:.3s;transform-origin:left;}
+.svc:hover::after{transform:scaleX(1);}
+.svc:hover{background:#3A3028;transform:translateY(-4px);}
+.svc-icon{font-size:2rem;margin-bottom:1.2rem;display:block;}
+.svc h3{font-family:'Playfair Display',serif;font-size:1.15rem;color:#fff;margin-bottom:.7rem;}
+.svc p{color:rgba(255,255,255,.4);font-size:.85rem;line-height:1.65;font-weight:300;}
+.services-cta{margin-top:2.5rem;text-align:center;}
+
+/* ─── PORTFOLIO PREVIEW ─── */
+.portfolio-prev{padding:6rem 4rem;}
+.portfolio-prev .eyebrow{color:var(--warm);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
+.portfolio-prev .eyebrow::before{content:'';width:28px;height:1px;background:var(--warm);}
+.portfolio-prev h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,2.5vw,2.6rem);color:var(--dark);margin-bottom:3rem;}
+.pf-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:300px 240px;gap:4px;}
+.pf-card{overflow:hidden;position:relative;cursor:pointer;}
+.pf-card.tall{grid-row:span 2;}
+.pf-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s;filter:brightness(.75);}
+.pf-card:hover img{transform:scale(1.06);filter:brightness(.55);}
+.pf-overlay{position:absolute;bottom:1.2rem;left:1.2rem;}
+.pf-tag{font-size:.65rem;color:var(--warm-light);letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:.25rem;}
+.pf-name{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;}
+.pf-cta{margin-top:2rem;text-align:center;}
+
+/* ─── CTA BANNER ─── */
+.cta-banner{background:var(--warm);padding:5rem 4rem;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.cta-banner h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.4rem);color:#fff;line-height:1.25;}
+.cta-banner p{color:rgba(255,255,255,.7);margin-top:.6rem;font-weight:300;}
+.btn-white{background:#fff;color:var(--warm);}
+.btn-white:hover{background:rgba(255,255,255,.9);transform:translateY(-2px);}
+
+/* ─── FOOTER ─── */
+footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;border-top:1px solid rgba(200,137,74,.1);}
+.footer-brand .logo-name{font-family:'Playfair Display',serif;color:#fff;font-size:1.2rem;}
+.footer-brand p{color:rgba(255,255,255,.35);font-size:.85rem;line-height:1.7;margin-top:.8rem;max-width:240px;font-weight:300;}
+.footer-col h4{color:var(--warm-light);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.2rem;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.footer-col ul a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.88rem;transition:color .2s;}
+.footer-col ul a:hover{color:var(--warm-light);}
+.footer-col ul li{color:rgba(255,255,255,.45);font-size:.88rem;}
+.footer-bottom{background:var(--dark);border-top:1px solid rgba(255,255,255,.05);padding:1.5rem 4rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{color:rgba(255,255,255,.2);font-size:.75rem;}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:6rem 2rem 3rem;}
+  .hero-left::after{display:none;}
+  .hero-right{height:55vw;}
+  .stats{flex-wrap:wrap;gap:1.5rem;padding:2rem;}
+  .stat{border-right:none;max-width:50%;}
+  .intro{grid-template-columns:1fr;gap:2rem;padding:4rem 2rem;}
+  .intro-img{display:none;}
+  .services-prev{padding:4rem 2rem;}
+  .services-cards{grid-template-columns:1fr 1fr;}
+  .portfolio-prev{padding:4rem 2rem;}
+  .pf-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+  .pf-card.tall{grid-row:span 1;}
+  .pf-card{height:200px;}
+  .cta-banner{grid-template-columns:1fr;padding:3rem 2rem;text-align:center;}
+  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 340 55" xmlns="http://www.w3.org/2000/svg" style="height:44px;width:auto;">
+      <circle cx="26" cy="27" r="24" fill="none" stroke="#4a7c45" stroke-width="3"/>
+      <rect x="20" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="28" y="8" width="4" height="9" rx="1.5" fill="#4a7c45"/>
+      <rect x="17" y="16" width="18" height="14" rx="2.5" fill="#4a7c45"/>
+      <path d="M26 30 Q26 44 14 50" fill="none" stroke="#4a7c45" stroke-width="3.5" stroke-linecap="round"/>
+      <polygon points="30,18 23,29 27,29 21,41 31,26 27,26" fill="white"/>
+      <text x="58" y="20" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="11" fill="rgba(255,255,255,0.75)" letter-spacing="1.2">ELEKTRICITEITSWERKEN</text>
+      <text x="56" y="47" font-family="Arial Black, Impact, sans-serif" font-weight="900" font-size="28" fill="#ffffff" letter-spacing="-0.5">GASTMANS</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="diensten.html">Diensten</a></li>
+    <li><a href="realisaties.html">Realisaties</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="diensten.html">Diensten</a>
+  <a href="realisaties.html">Realisaties</a>
+  <a href="over-ons.html">Over ons</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Vakmanschap & Kwaliteit</p>
+    <h1 class="hero-title">Elektriciteit<br>met <em>karakter</em><br>en precisie.</h1>
+    <p class="hero-desc">Van renovatie tot nieuwbouw Gastmans levert betrouwbare elektriciteitswerken met oog voor detail en een vlekkeloze afwerking.</p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn btn-warm">Offerte aanvragen →</a>
+      <a href="realisaties.html" class="btn btn-outline">Bekijk realisaties</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-grid">
+      <div class="hero-cell wide">
+        <img src="images/img13.jpg" alt="Sfeervolle tuinverlichting">
+        <div class="hero-badge">Appartement</div>
+      </div>
+      <div class="hero-cell">
+        <img src="images/img03.jpg" alt="Moderne living">
+        <div class="hero-badge">Terras</div>
+      </div>
+      <div class="hero-cell">
+        <img src="images/img14.jpg" alt="Badkamer">
+        <div class="hero-badge">Keuken</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><span class="stat-n">10+</span><span class="stat-l">Jaar ervaring</span></div>
+  <div class="stat"><span class="stat-n">500+</span><span class="stat-l">Projecten afgerond</span></div>
+  <div class="stat"><span class="stat-n">100%</span><span class="stat-l">AREI conform</span></div>
+  <div class="stat"><span class="stat-n">24u</span><span class="stat-l">Reactietijd</span></div>
+</div>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-text">
+    <p class="eyebrow">Wie zijn wij</p>
+    <h2>Betrouwbare elektriciteit voor elk project</h2>
+    <p>Elektriciteitswerken Gastmans staat voor vakmanschap, transparantie en een persoonlijke aanpak. Of u nu bouwt, renoveert of uw installatie wil moderniseren wij begeleiden u van begin tot einde.</p>
+    <p>Gevestigd in Mol, actief in de hele regio Antwerpen. Elke installatie conform AREI, netjes afgewerkt en altijd met oog voor de klant.</p>
+    <a href="over-ons.html" class="btn btn-warm">Lees meer over ons →</a>
+  </div>
+  <div class="intro-img">
+    <img src="images/img11.jpg" alt="Terrein bij nacht">
+  </div>
+</section>
+
+<!-- SERVICES PREVIEW -->
+<section class="services-prev">
+  <p class="eyebrow">Onze expertise</p>
+  <h2>Wat we voor u doen</h2>
+  <p class="sub">Vier kerngebieden waar Gastmans dagelijks het verschil maakt.</p>
+  <div class="services-cards">
+    <div class="svc">
+      <span class="svc-icon">🏗️</span>
+      <h3>Nieuwbouw</h3>
+      <p>Volledige installatie voor nieuwbouwprojecten, afgestemd op de laatste energienormen en AREI-vereisten.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">🔧</span>
+      <h3>Renovatie</h3>
+      <p>Modernisering van verouderde installaties, vervanging van zekeringkasten en aanpassingen aan hedendaagse normen.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">🚗</span>
+      <h3>Laadpalen</h3>
+      <p>Thuislaadpalen voor elektrische wagens snel, veilig en future-proof geïnstalleerd met slimme sturing.</p>
+    </div>
+    <div class="svc">
+      <span class="svc-icon">💡</span>
+      <h3>Buitenverlichting</h3>
+      <p>Sfeervolle verlichting voor tuin en terras van wandlampen tot sfeerspots en gevelverlighting.</p>
+    </div>
+  </div>
+  <div class="services-cta"><a href="diensten.html" class="btn btn-warm" style="margin-top:2.5rem;display:inline-block;">Alle diensten bekijken →</a></div>
+</section>
+
+<!-- PORTFOLIO PREVIEW -->
+<section class="portfolio-prev">
+  <p class="eyebrow">Portfolio</p>
+  <h2>Recente realisaties</h2>
+  <div class="pf-grid">
+    <div class="pf-card tall">
+      <img src="images/img07.jpg" alt="Tuinverlichting">
+      <div class="pf-overlay"><span class="pf-tag">Buitenverlichting</span><div class="pf-name">Terras & tuin, Mol</div></div>
+    </div>
+    <div class="pf-card">
+      <img src="images/img02.jpg" alt="Zekeringkast">
+      <div class="pf-overlay"><span class="pf-tag">Renovatie</span><div class="pf-name">Nieuwe zekeringkast</div></div>
+    </div>
+    <div class="pf-card">
+      <img src="images/img14.jpg" alt="Keuken">
+      <div class="pf-overlay"><span class="pf-tag">Keuken</span><div class="pf-name">Keukeninstallatie</div></div>
+    </div>
+    <div class="pf-card">
+      <img src="images/img06.jpg" alt="Badkamer">
+      <div class="pf-overlay"><span class="pf-tag">Badkamer</span><div class="pf-name">Volledige renovatie</div></div>
+    </div>
+    <div class="pf-card">
+      <img src="images/img11.jpg" alt="Living">
+      <div class="pf-overlay"><span class="pf-tag">Appartement</span><div class="pf-name">Woonunit Mechelen</div></div>
+    </div>
+  </div>
+  <div class="pf-cta"><a href="realisaties.html" class="btn btn-warm">Volledig portfolio →</a></div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div>
+    <h2>Klaar om uw project te starten?</h2>
+    <p>Vraag vrijblijvend een offerte aan, we antwoorden binnen 24 uur.</p>
+  </div>
+  <a href="contact.html" class="btn btn-white">Neem contact op →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo-name">Elektriciteitswerken Gastmans</div>
+    <p>Vakkundige elektriciteitswerken voor particulieren en bedrijven in de regio Mol en omstreken.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Pagina's</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="diensten.html">Diensten</a></li>
+      <li><a href="realisaties.html">Realisaties</a></li>
+      <li><a href="over-ons.html">Over ons</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Contact</h4>
+    <ul>
+      <li>+32 493 74 99 22</li>
+      <li>michiel.gastmans@hotmail.com</li>
+      <li>OLV-straat 48, 2400 Mol</li>
+      <li>BTW: BE1012.898.051</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2025 Elektriciteitswerken Gastmans — Alle rechten voorbehouden</p>
+  <p>BTW BE1012.898.051</p>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+</script>
+</body>
+</html>
