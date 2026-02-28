@@ -93,12 +93,16 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
   .nav-links{display:none;}
   .nav-hamburger{display:flex;}
   .nav-logo svg{height:36px;}
-  .page-hero{padding:7rem 2rem 5rem;}
-  .contact-wrap{grid-template-columns:1fr;gap:3rem;padding:4rem 2rem;}
-  .map-section{padding:0 2rem 4rem;}
+  .page-hero{padding:7rem 1.5rem 5rem;}
+  .contact-wrap{grid-template-columns:1fr;gap:3rem;padding:4rem 1.5rem;}
+  .contact-info-side{min-width:0;}
+  .cc{padding:1.2rem;gap:.8rem;min-width:0;word-break:break-word;}
+  .cc-val{font-size:.85rem;word-break:break-word;}
+  .map-section{padding:0 1.5rem 4rem;}
+  .form-card{padding:2rem 1.5rem;}
   .form-row{grid-template-columns:1fr;}
-  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 2rem;}
-  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 2rem;}
+  footer{grid-template-columns:1fr;gap:2rem;padding:3rem 1.5rem;}
+  .footer-bottom{flex-direction:column;gap:.5rem;text-align:center;padding:1.5rem 1.5rem;}
 }
 </style>
 </head>
@@ -158,7 +162,7 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
         <div class="cc-icon">✉️</div>
         <div>
           <span class="cc-label">E-mail</span>
-          <a href="mailto:michiel.gastmans@hotmail.com" class="cc-val">michiel.gastmans@hotmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#325f5b515a5b575e1c555341465f535c41725a5d465f535b5e1c515d5f" class="cc-val"><span class="__cf_email__" data-cfemail="7e13171d16171b1250191f0d0a131f100d3e16110a131f1712501d1113">[email&#160;protected]</span></a>
         </div>
       </div>
       <div class="cc">
@@ -261,7 +265,7 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
     <h4>Contact</h4>
     <ul>
       <li>+32 493 74 99 22</li>
-      <li><a href="mailto:michiel.gastmans@hotmail.com" style="color:rgba(255,255,255,.45);text-decoration:none;">michiel.gastmans@hotmail.com</a></li>
+      <li><a href="/cdn-cgi/l/email-protection#4a27232922232f26642d2b393e272b24390a22253e272b232664292527" style="color:rgba(255,255,255,.45);text-decoration:none;"><span class="__cf_email__" data-cfemail="0f62666c67666a6321686e7c7b626e617c4f67607b626e6663216c6062">[email&#160;protected]</span></a></li>
       <li>OLV-straat 48, 2400 Mol</li>
       <li>BTW: BE1012.898.051</li>
     </ul>
@@ -272,7 +276,7 @@ footer{background:var(--dark);padding:4rem;display:grid;grid-template-columns:1.
   <p>BTW BE1012.898.051 &nbsp;|&nbsp; Website door <a href="https://cortech.be" target="_blank" rel="noopener" style="color:rgba(255,255,255,.4);text-decoration:none;" onmouseover="this.style.color='#E8C49A'" onmouseout="this.style.color='rgba(255,255,255,.4)'">Cortech.be</a></p>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function toggleMenu() {
   var menu = document.getElementById('mobileMenu');
   if (menu.style.display === 'flex') {
@@ -307,7 +311,8 @@ function submitForm() {
     '\nBericht:\n' + message
   );
 
-  window.location.href = 'mailto:michiel.gastmans@hotmail.com?subject=' + subject + '&body=' + body;
+  window.location.href = 'mailto:info@gastmans.be?subject=' + subject + '&body=' + body;
+
   document.getElementById('successMsg').classList.add('show');
 }
 </script>
